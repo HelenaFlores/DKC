@@ -15,8 +15,7 @@ public class LoginTests extends TestBase {
     private HomePage homePage = new HomePage();
 
     @CsvFileSource(resources = "/test_data/authorizationWithAllFilledFieldsTest.csv")
-    @Tag("positive")
-    @Tag("baseTest")
+    @Tag("smoke")
     @ParameterizedTest(name = "Авторизация с верно заполненнным логином {0} и паролем {1}")
     void succsessfulLoginTest(String login, String password) {
         step("Open form", () -> {
@@ -34,8 +33,7 @@ public class LoginTests extends TestBase {
         });
     }
 
-    @Tag("negative")
-    @Tag("baseTest")
+    @Tag("smoke")
     @Test
     void wrongPasswordForLoginTest() {
         step("Open form", () -> {

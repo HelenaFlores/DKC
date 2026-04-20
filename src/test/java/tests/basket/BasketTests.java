@@ -15,7 +15,7 @@ public class BasketTests extends TestBase {
         private HomePage homePage = new HomePage();
         private BasketPage basketPage = new BasketPage();
 
-        @Tag("baseTest")
+        @Tag("smoke")
         @Test
         void succsessfulGoToBasketTest() {
             step("Open form", () -> {

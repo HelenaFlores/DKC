@@ -15,7 +15,7 @@ public class CatalogTests extends TestBase {
         private HomePage homePage = new HomePage();
         private CatalogPage catalogPage = new CatalogPage();
 
-        @Tag("baseTest")
+        @Tag("smoke")
         @Test
         void succsessfulGoToCatalogTest() {
             step("Open form", () -> {

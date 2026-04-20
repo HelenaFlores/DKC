@@ -2,6 +2,7 @@ package tests.logout;
 
 import components.LoginUI;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import tests.TestBase;
@@ -21,6 +22,7 @@ public class LogoutTests extends TestBase {
         });
     }
 
+    @Tag("smoke")
     @Test()
     void succsessfulLogoutTest() {
         step("Logout profile", () -> {

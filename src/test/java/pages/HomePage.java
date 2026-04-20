@@ -1,8 +1,12 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 
 public class HomePage {
@@ -11,12 +15,17 @@ public class HomePage {
     private final SelenideElement emailInput = $("[name='USER_LOGIN']");
     private final SelenideElement passwordInput = $("[name='USER_PASSWORD']");
     private final SelenideElement authButton = $("[name='Login']");
+    private final SelenideElement authzorizedProfileButton =
+            $(".buttons-bottom-header__link.drop-menu.authorized-user._init");
     private final SelenideElement authMenu = $(".authorized-user__menu");
     private final SelenideElement logoutButton = $("a[href*='logout']");
+    private final SelenideElement errorAlert = $(".error_request._opened");
+    private final SelenideElement basketButton = $("a[href='/personal/cart/']");
+    private final SelenideElement catalogButton = $("a[href='/catalog/']");
 
-    @Step("Open registration page /automation-practice-form")
+    @Step("Open form")
     public HomePage openPage() {
-        open("/automation-practice-form");
+        open(baseUrl);
 
         return this;
     }
@@ -56,9 +65,43 @@ public class HomePage {
         return this;
     }
 
+    @Step("Checking for authMenu is Disabled")
+    public HomePage presenceOfAuthMenuIsMissing() {
+        authMenu.shouldNotHave();
+
+        return this;
+    }
+
     @Step("Click logout button")
     public HomePage clickLogoutButton() {
         logoutButton.click();
+
+        return this;
+    }
+
+    @Step("Click profile button")
+    public HomePage clickProfileButton() {
+        authzorizedProfileButton.click();
+
+        return this;
+    }
+
+    @Step("Checking for text alert")
+    public String getTextAlert() {
+        errorAlert.shouldBe(Condition.visible, Duration.ofSeconds(5));
+        return errorAlert.getText();
+    }
+
+    @Step("Click basket button")
+    public HomePage clickBasketButton() {
+        basketButton.click();
+
+        return this;
+    }
+
+    @Step("Click catalog button")
+    public HomePage clickCatalogButton() {
+        catalogButton.click();
 
         return this;
     }

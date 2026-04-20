@@ -1,26 +1,18 @@
-package tests;
+package tests.login;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.HomePage;
+import tests.TestBase;
 
 import static io.qameta.allure.Allure.step;
-
+import static org.assertj.core.api.Assertions.assertThat;
+import static tests.TestData.*;
 
 public class LoginTests extends TestBase {
     private HomePage homePage = new HomePage();
-
-   /* @AfterEach
-    void afterWork() {
-        step("Logout profile", () -> {
-            homePage.clickLogoutButton();
-        });
-    }*/
-
 
     @CsvFileSource(resources = "/test_data/authorizationWithAllFilledFieldsTest.csv")
     @Tag("positive")
@@ -32,7 +24,6 @@ public class LoginTests extends TestBase {
         });
         step("Fill form", () -> {
             homePage
-                    .openPage()
                     .clickLoginInButton()
                     .setEmail(login)
                     .setPassword(password)
@@ -44,13 +35,22 @@ public class LoginTests extends TestBase {
     }
 
     @Tag("negative")
+    @Tag("baseTest")
     @Test
-    void practicFormWithoutFieldsTest() {
-        step("Confirm the form without filling it out", () -> {
-          //  homePage.submitClick();
+    void wrongPasswordForLoginTest() {
+        step("Open form", () -> {
+            homePage.openPage();
+        });
+        step("Fill form", () -> {
+            homePage
+                    .clickLoginInButton()
+                    .setEmail(login)
+                    .setPassword(errorPassword)
+                    .clickAuthButton();
         });
         step("Verify results", () -> {
-           // homePage.presenceOfModalWindow();
-            });
+           String actualThat = homePage.getTextAlert().toString();
+           assertThat(actualThat).isEqualTo(errorText);
+        });
     }
 }

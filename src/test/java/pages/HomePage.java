@@ -12,6 +12,7 @@ public class HomePage {
     private final SelenideElement passwordInput = $("[name='USER_PASSWORD']");
     private final SelenideElement authButton = $("[name='Login']");
     private final SelenideElement authMenu = $(".authorized-user__menu");
+    private final SelenideElement logoutButton = $("a[href*='logout']");
 
     @Step("Open registration page /automation-practice-form")
     public HomePage openPage() {
@@ -51,6 +52,13 @@ public class HomePage {
     @Step("Checking for authMenu")
     public HomePage presenceOfAuthMenu() {
         authMenu.shouldHave();
+
+        return this;
+    }
+
+    @Step("Click logout button")
+    public HomePage clickLogoutButton() {
+        logoutButton.click();
 
         return this;
     }

@@ -3,6 +3,8 @@ package tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.HomePage;
 
 import static io.qameta.allure.Allure.step;
@@ -18,22 +20,22 @@ public class LoginTests extends TestBase {
         });
     }
 
+    @CsvFileSource(resources = "/test_data/authorizationWithAllFilledFieldsTest.csv")
     @Tag("positive")
     @Tag("baseTest")
-    @Test
-    void succsessfulLoginTest() {
+    @ParameterizedTest(name = "Авторизация с верно заполненнным логином {0} и паролем {1}")
+    void succsessfulLoginTest(String login, String password) {
         step("Fill form", () -> {
             homePage
                     .clickLoginInButton()
-                    .setEmail("6f596d6697@emailax.pro")
-                    .setPassword("Password1@")
+                    .setEmail(login)
+                    .setPassword(password)
                     .clickAuthButton();
         });
-    /*    step("Verify results", () -> {
-            homePage.checkResultForm("Student Name");
-        });*/
+        step("Verify results", () -> {
+            homePage.presenceOfAuthMenu();
+        });
     }
-
 
     @Tag("negative")
     @Test

@@ -11,6 +11,7 @@ public class HomePage {
     private final SelenideElement emailInput = $("[name='USER_LOGIN']");
     private final SelenideElement passwordInput = $("[name='USER_PASSWORD']");
     private final SelenideElement authButton = $("[name='Login']");
+    private final SelenideElement authMenu = $(".authorized-user__menu");
 
     @Step("Open registration page /automation-practice-form")
     public HomePage openPage() {
@@ -43,6 +44,13 @@ public class HomePage {
     @Step("Click button auth")
     public HomePage clickAuthButton() {
         authButton.click();
+
+        return this;
+    }
+
+    @Step("Checking for authMenu")
+    public HomePage presenceOfAuthMenu() {
+        authMenu.shouldHave();
 
         return this;
     }

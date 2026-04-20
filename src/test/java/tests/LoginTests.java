@@ -19,6 +19,7 @@ public class LoginTests extends TestBase {
     }
 
     @Tag("positive")
+    @Tag("baseTest")
     @Test
     void succsessfulLoginTest() {
         step("Fill form", () -> {

@@ -48,9 +48,9 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-task practicFormTests(type: Test) {
+task baseTest(type: Test) {
     useJUnitPlatform {
-        includeTags("practicFormTests")
+        includeTags("baseTest")
     }
     systemProperty 'remoteUrl', System.getProperty('remoteUrl')
 }

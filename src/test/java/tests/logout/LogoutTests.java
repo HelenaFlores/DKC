@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import tests.TestBase;
 
-import static io.qameta.allure.Allure.step;
 import static tests.TestData.login;
 import static tests.TestData.password;
 
@@ -16,22 +15,17 @@ public class LogoutTests extends TestBase {
 
     @BeforeEach
     void setUpTest() {
-        step("Open form and login", () -> {
-            LoginUI loginUI = new LoginUI();
-            loginUI.login(login, password);
-        });
+        LoginUI loginUI = new LoginUI();
+        loginUI.login(login, password);
     }
 
     @Tag("smoke")
     @Test()
     void succsessfulLogoutTest() {
-        step("Logout profile", () -> {
-            homePage
-                    .clickProfileButton()
-                    .clickLogoutButton();
-        });
-        step("Verify results", () -> {
-            homePage.presenceOfAuthMenuIsMissing();
-        });
+        homePage
+                .clickProfileButton()
+                .clickLogoutButton();
+
+        homePage.presenceOfAuthMenuIsMissing();
     }
 }

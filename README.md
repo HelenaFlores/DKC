@@ -116,6 +116,11 @@
 </video> 
 </p>
 
+<p align="center">
+<video src="media/video/838951e131897e280daedca1f1f63d1c.mp4" width="950" height="400" controls muted>
+</video> 
+</p>
+
 ---
 ### 🚀 Запуск автотестов  
 

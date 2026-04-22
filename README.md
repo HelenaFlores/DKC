@@ -91,34 +91,7 @@
 ### 3. 🎥 Видео выполнения тестов  
 Использование Selenoid позволяет не только наблюдать за тестами в реальном времени, но и автоматически записывать видео каждого прогона. Это значительно ускоряет анализ причин падения тестов.
 <p align="center">
-<video src="media/video/videoReport.mp4" width="950" height="400" controls muted>
-</video> 
-</p>
-
-
-<p align="center">
-<video src="media/video/vid.mp4" width="950" height="400" controls muted>
-</video> 
-</p>
-
-<p align="center">
-<video src="media/video/vid.gif" width="950" height="400" controls muted>
-</video> 
-</p>
-
-<p align="center">
-<video src="media/video/vidd.mp4" width="950" height="400" controls muted>
-</video> 
-</p>
-
-<p align="center">
-<video src="media/video/vidd.gif" width="950" height="400" controls muted>
-</video> 
-</p>
-
-<p align="center">
-<video src="media/video/838951e131897e280daedca1f1f63d1c.mp4" width="950" height="400" controls muted>
-</video> 
+<img title="VideoReport" src="media/video/videoReport.gif" width="850" height="400" alt="video">   
 </p>
 
 ---
